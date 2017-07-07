@@ -1,0 +1,27 @@
+language: python
+
+python:
+- '2.7'
+
+install:
+- pip install flask
+- pip install flake8
+- pip install pytest-cov
+- pip install codecov
+
+before_script:
+- flake8 . --exclude=__init__.py
+
+script:
+- py.test --cov .
+
+after_success:
+- coverage xml
+- codecov
+
+deploy:
+  provider: heroku
+  api_key:
+    secure: rjaGzvk3UiHpZ3w6oEsyq1XUYN/TpBBjkqSoZk712O05DBw1ptrjj4ollWI2ULc6gYjmy4tkxCIrPX7Ot6DnDPpz7McNF0rtc/oLY8xyOPq0h6UMFRxNvq2j4CsP2rok4XZ8dz8SC3qZGzVqP3S5+QmfWgFnr1OuygIswzgX71SOMlWomQG9uLNvakWE/FC6POM96pgGmv6xRr9Zd7SXl1HhAUDZmDaBSek6xAqV1AXs3n8tDVxEdjV9wBJHScpnvLzgaSY7Ivl0s4nKrKCp1unPWQ4yx1nqjupP+72RV1eUNdPDT1C1QmJweB8MQ+zyVCJ05teXXdspNhkJEQfJEo7Qs5+rsqVeU8uQhK5zBrDltSH7XOZ5qJb5CUDlIFFr5piu3NFFt/JvPAhRJle+azifhrykDmQt6BOiUQLdc3XWE6FQ9DPJq05E7Y297DPE0L51l0XPJCoTM/7GFtDdE8CVrXBJ5gzqGQMe4pEjV03FxwvBdTzF6UzrLWpoKUEyQd9pTSXYyodOop8Fv+Rk1kb3eSqNNF5ORRLxw2xQLYDETWfd2oSpafG5epaQEv9UETJrsdKoMvsZoIN5BL6SLaCBL/k5lbNghenlZ3yoT1vG5yVShvfgozy8IpXxOmvXW4noVSrP6fma+3iRwu2LcMg3buA2en2wMhUCwCErVjg=
+  on: develop
+  app: my-cool-site-foxio-ci
