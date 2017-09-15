@@ -5,16 +5,9 @@ Copyright 2017 Blake Grotewold <blake@fox.io>
 """
 import os
 
-from flask import Flask
-from coolsite import utils
+from coolsite import app
 
-app = Flask(__name__)
-
-
-@app.route('/')
-@app.route('/<name>')
-def hello(name='World'):
-    return utils.say_hello(name)
+import coolsite.controller
 
 
 if __name__ == '__main__':
