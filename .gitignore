@@ -1,7 +1,10 @@
 .DS_Store
 venv
 .venv
+venv
 .vscode
 *.pyc
 .cache
-
+htmlcov
+.coverage
+*.log
