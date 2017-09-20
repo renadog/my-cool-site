@@ -13,7 +13,7 @@ before_script:
 - flake8 coolsite
 
 script:
-- py.test --cov=coolsite .
+- py.test --ignore=regression_tests --cov=coolsite .
 
 after_success:
 - coverage xml
