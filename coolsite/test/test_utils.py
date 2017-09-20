@@ -16,6 +16,14 @@ def test_build_image_path_for_name_casing(mock_url_for):
     assert utils.build_image_path_for('BlAkE') == '/static/img/blake.png'
     assert mock_url_for.called
 
+@patch('coolsite.utils.url_for')
+def test_build_image_path_for_None(mock_url_for):
+    mock_url_for.return_value = '/static/img/blake.png'
+    try:
+        utils.build_image_path_for(None)
+        assert False
+    except AttributeError:
+        assert True
 
 def test_check_for_valid_path_none():
     assert utils.check_for_valid_path(None) is False
