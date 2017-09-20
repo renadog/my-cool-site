@@ -10,10 +10,10 @@ install:
 - pip install codecov
 
 before_script:
-- flake8 . --exclude=__init__.py
+- flake8 coolsite
 
 script:
-- py.test --cov .
+- py.test --cov=coolsite .
 
 after_success:
 - coverage xml
