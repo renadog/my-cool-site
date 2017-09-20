@@ -35,6 +35,7 @@ def test_picture_controller_redirect(test_app):
 def test_picture_controller_exists(test_app):
     result = test_app.get('/picture/rena')
     assert result.status_code == 200
+    assert 'couldn\'t find the requested image, here take this!' not in result.data
 
 
 def test_picture_controller_does_not_exists(test_app):
